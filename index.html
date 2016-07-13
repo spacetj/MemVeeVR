@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="./vendors/aframe-href-component.min.js"></script>
+  <script src="./vendors/aframe-text-component.min.js"></script>
+  <script src="./vendors/aframe-event-set-component.min.js"></script>
+  <script src="./vendors/aframe-fit-texture-component.min.js"></script>
+  <script src="./vendors/aframe-vid-shader.min.js"></script>
+  <script src="./vendors/aframe-particle-system-component.min.js"></script>
+  <script src="./vendors/aframe-html-shader.min.js"></script>
+
+</head>
+<body>
+
+      <a-scene>
+
+        <a-assets>
+
+          <img id="bg" src="./assets/img/lake.jpg">
+          <img id="navigation" src="./assets/img/button1.png">
+          <img id="logo" src="./assets/img/logo.jpg">
+          <img id="solution" src="./assets/img/solution.png">
+          <img id="market" src="./assets/img/market.png">
+          <img id="likes" src="./assets/img/fblikes.png">
+          <img id="landingPage" src="./assets/img/fblikes.png">
+          <img id="page" src="./assets/img/page.png">
+
+          <video id="vid1" src="./assets/video/problem.mp4"></video>
+
+        </a-assets>
+
+        <a-camera position="0 1.8 0" look-controls wasd-controls>
+
+          <a-cursor visible="true" scale="2" color="#4CC3D9" offset="2" maxdistance="100" opacity="0.5" fuse="true"></a-cursor>
+
+        </a-camera>
+
+        <!-- Logo -->
+        <a-entity text="text: MemVee" material="color: #3399FF" position="-5.25 5.0 -3" rotation="0 45 0"></a-entity>
+        <a-entity class="box" geometry="primitive: box; width:3; height:3; depth:3;" position="-7.07 2 -7.07" rotation="0 -45 0" event-set="_event: mouseenter; geometry.width: 6; geometry.height: 6; geometry.depth: 6;, _event: mouseleave; geometry.width: 3; geometry.height: 3; geometry.depth: 3;" material="src:#logo" fit-texture></a-entity>
+        <a-entity text="text: A new dimension of learning" height="0.01" size="0.1" material="color: white" position="-9 -2.25 -3" rotation="0 45 0"></a-entity>
+
+        <!-- Problem -->
+        <a-entity text="text: Problem" material="color: white" position="-0.25 4 -4" rotation="0 -15 0"></a-entity>
+        <a-entity class="box" geometry="primitive: box; width:3; height:3; depth:3;" position="2.59 2 -9.66" rotation="0 -105 0" event-set="_event: mouseenter; geometry.width: 6; geometry.height: 6; geometry.depth: 6; material.pause: false;, _event: mouseleave; geometry.width: 3; geometry.height: 3; geometry.depth: 3; material.pause: true;" loop="true" material="shader:video;src:#vid1;" fit-texture></a-entity>
+
+        <!-- Solution -->
+        <a-entity text="text: Solution" material="color: white" position="5.0 4.5 -2.59" rotation="0 -75 0"></a-entity>
+        <!-- <a-entity class="box" geometry="primitive: box; width:3; height:3; depth:3;" position="9.66 2 -2.59" rotation="0 -165 0" event-set="_event: mouseenter; geometry.width: 6; geometry.height: 6; geometry.depth: 6;, _event: mouseleave; geometry.width: 3; geometry.height: 3; geometry.depth: 3;" material="src:#solution" fit-texture></a-entity> -->
+        <a-entity class="box" geometry="primitive: box; width:3; height:3; depth:4;" position="9.66 2 -2.59" rotation="0 -165 0" event-set="_event: mouseenter; geometry.width: 6; geometry.height: 6; geometry.depth: 7;, _event: mouseleave; geometry.width: 3; geometry.height: 3; geometry.depth: 4;" material="src:#solution" fit-texture href="./solution.html" target="#boxout"> <a-animation id="boxout" attribute="rotation" from="0 0 0" to="0 -360 0" begin="href" dur="1000" easing="ease-in-back"></a-animation></a-entity>
+
+        <!-- Market -->
+        <a-entity text="text: Market" material="color: #ff9900" position="3.75 4.4 2.59" rotation="0 -135 0"></a-entity>
+        <a-entity class="box" geometry="primitive: box; width:3; height:3; depth:3;" position="7.07 2 7.07" rotation="0 -225 0" event-set="_event: mouseenter; geometry.width: 8; geometry.height: 8; geometry.depth: 8;, _event: mouseleave; geometry.width: 3; geometry.height: 3; geometry.depth: 3;" material="src:#market" fit-texture></a-entity>
+
+        <!-- Team -->
+        <a-entity text="text: 'Very promising. The concept of memory palaces is proven and" height="0.01" size="0.1" material="color: white" position="5 6 15" rotation="0 -195 0"></a-entity>
+        <a-entity text="text: this is a creative way to make education fun and engaging.'" material="color: white" position="5 5 15" rotation="0 -195 0"></a-entity>
+        <a-entity text="text: Ken Singer," material="color: white" position="5 3 15" rotation="0 -195 0"></a-entity>
+        <a-entity text="text: Managing Director of the Center for Entrepreneurship" material="color: white" position="5 2 15" rotation="0 -195 0"></a-entity>
+        <a-entity text="text: 250+" material="color: white" position="-3.4 0.5 15" rotation="0 -195 0"></a-entity>
+        <a-entity class="box" geometry="primitive: box; width:2; height:2; depth:2;" position="-4 -1 15" rotation="0 -280 0" material="src:#likes" fit-texture></a-entity>
+
+
+        <!-- Solution -->
+        <a-entity class="box" geometry="primitive: box; width:3; height:3; depth:3;" position="-9.66 2 2.59" rotation="0 -345 0" event-set="_event: mouseenter; geometry.width: 9; geometry.height: 9; geometry.depth: 9;, _event: mouseleave; geometry.width: 3; geometry.height: 3; geometry.depth: 3;" material="src:#page"></a-entity>
+        <!-- <a-entity class="box" geometry="primitive: box; width:3; height:3; depth:3;" position="-9.66 2 2.59" rotation="0 -345 0" event-set="_event: mouseenter; geometry.width: 6; geometry.height: 6; geometry.depth: 6;, _event: mouseleave; geometry.width: 3; geometry.height: 3; geometry.depth: 3;" material="src:#navigation" fit-texture href="./section2.html" target="#boxout"> <a-animation id="boxout" attribute="rotation" from="0 0 0" to="0 -360 0" begin="href" dur="1000" easing="ease-in-back"></a-animation></a-entity> -->
+
+        <a-light color="#CCCCCC" position="0 5 0" type="ambient"></a-light>
+
+        <a-sky src="#bg"></a-sky>
+
+      </a-scene>
+
+
+</body>
+</html>
