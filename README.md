@@ -1,3 +1,5 @@
 # MemVeeVR
 
-A virtual reality website application built on top of the AFrame framework. Uses D3 in order to 3D graph in a virtual reality environment.
+A virtual reality web application built on top of the AFrame framework. Uses D3 in order to render 3D graphs in a virtual reality environment that assembles lecture notes. 
+
+
