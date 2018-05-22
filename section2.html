@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="./assets/scripts/aframe-href-component.min.js"></script>
+  <script src="./assets/scripts/aframe-text-component.min.js"></script>
+  <script src="./assets/scripts/aframe-event-set-component.min.js"></script>
+  <script src="./assets/scripts/aframe-fit-texture-component.min.js"></script>
+  <script src="./assets/scripts/aframe-vid-shader.min.js"></script>
+  <script src="./assets/scripts/aframe-bmfont-text-component.min.js"></script>
+
+
+</head>
+<body>
+
+  <a-scene>
+
+    <a-assets>
+
+      <img id="bg" src="./assets/img/bg.jpg">
+      <img id="navigation" src="./assets/img/button2.png">
+      
+
+
+      <video id="paris" src="./assets/video/paris.mp4"></video>
+
+    </a-assets>
+
+    <a-camera position="0 1.8 0" look-controls wasd-controls>
+
+      <a-cursor visible="true" scale="2" color="#4CC3D9" offset="2" maxdistance="100" opacity="0.5" fuse="true"></a-cursor>
+
+    </a-camera>
+
+
+
+    <a-entity class="box" geometry="primitive: box" event-set="_event: mouseenter; geometry.width: 5; geometry.height: 5; geometry.depth: 5;, _event: mouseleave; geometry.width: 6; geometry.height: 2; geometry.depth: 3;"></a-entity>
+    <a-entity class="box" geometry="primitive: box" event-set="_event: mouseenter; geometry.width: 12; geometry.height: 4; geometry.depth: 5;, _event: mouseleave; geometry.width: 6; geometry.height: 2; geometry.depth: 3;" material="src: url(./assets/img/scale.png)" fit-texture></a-entity>
+    <a-entity class="box" geometry="primitive: box" event-set="_event: mouseenter; geometry.width: 12; geometry.height: 4; geometry.depth: 5;, _event: mouseleave; geometry.width: 6; geometry.height: 2; geometry.depth: 3;"></a-entity>
+    <a-entity class="box" geometry="primitive: box" event-set="_event: mouseenter; geometry.width: 12; geometry.height: 4; geometry.depth: 5; material.pause: false;, _event: mouseleave; geometry.width: 6; geometry.height: 2; geometry.depth: 3; material.pause: true;" material="shader:video;src:#paris;" fit-texture></a-entity>
+    <a-entity class="box" geometry="primitive: box" event-set="_event: mouseenter; geometry.width: 12; geometry.height: 4; geometry.depth: 5;, _event: mouseleave; geometry.width: 6; geometry.height: 2; geometry.depth: 3;"></a-entity>
+    <a-entity class="box" geometry="primitive: box" event-set="_event: mouseenter; geometry.width: 5; geometry.height: 5; geometry.depth: 5;, _event: mouseleave; geometry.width: 6; geometry.height: 2; geometry.depth: 3;" material="src:#navigation" fit-texture href="./index.html" target="#boxout"> <a-animation id="boxout" attribute="rotation" from="0 0 0" to="0 -360 0" begin="href" dur="1000" easing="ease-in-back"></a-animation></a-entity>
+
+    <a-light color="#CCCCCC" position="0 5 0" type="ambient"></a-light>
+
+    <a-sky src="#bg"></a-sky>
+
+  </a-scene>
+
+  <script src="./assets/scripts/script.js"></script>
+
+
+</body>
+</html>

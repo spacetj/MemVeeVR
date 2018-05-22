@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="./vendors/aframe-href-component.min.js"></script>
+  <script src="./vendors/aframe-text-component.min.js"></script>
+  <script src="./vendors/aframe-event-set-component.min.js"></script>
+  <script src="./vendors/aframe-fit-texture-component.min.js"></script>
+  <script src="./vendors/aframe-vid-shader.min.js"></script>
+  <script src="./vendors/aframe-particle-system-component.min.js"></script>
+  <script src="./vendors/aframe-html-shader.min.js"></script>
+
+</head>
+<body>
+
+      <a-scene>
+
+        <a-assets>
+
+          <img id="bg" src="./assets/img/bg6.jpg">
+          <img id="navigation" src="./assets/img/button1.png">
+          <img id="door" src="./assets/img/door.png">
+          <img id="audio" src="./assets/img/audio.jpg">
+          <img id="video" src="./assets/img/visual.png">
+          <img id="kinesthetic" src="./assets/img/kinesthetic.jpg">
+
+
+          <a-asset-item id="desk" src="./assets/models/desk.dae"></a-asset-item>
+
+
+          <video id="vid1" src="./assets/video/problem.mp4"></video>
+
+        </a-assets>
+
+        <a-camera position="0 1.8 0" look-controls wasd-controls>
+
+          <a-cursor visible="true" scale="2" color="#4CC3D9" offset="2" maxdistance="100" opacity="0.5" fuse="true"></a-cursor>
+
+        </a-camera>
+
+        <!-- <a-entity geometry="primitive: box" material="color:#5A67A6" event-set="_event: click; _target: #eye-1; visible: true,
+                           _event: click; _target: #eye-2; visible: true,
+                           _event: mouseenter; material.color: #5A67A6,
+                           _event: mouseleave; material.color: #FCB241" position="-1 0 -2">
+        <a-sphere id="eye-1" radius="0.05" position="-0.5 0.7 0.5" visible="true" material="" geometry="primitive:sphere;radius:0.05"></a-sphere>
+        <a-sphere id="eye-2" radius="0.05" position="0.5 0.7 0.5" visible="true" material="" geometry="primitive:sphere;radius:0.05"></a-sphere>
+      </a-entity> -->
+
+
+
+        <!-- <a-entity class="box" geometry="primitive: box; width:7; height:7; depth:7;" position="0 0 -10" rotation="" material="src:#desk" fit-texture></a-entity> -->
+        <a-entity collada-model="#desk" position="-1 1 -2"></a-entity>
+        <a-entity class="box" geometry="primitive: box; width:1; height:1; depth:1;" position="3 0.5 -3" rotation="0 45 0" material="src:#audio" fit-texture event-set="_event: click; _target: #audio-ani;, _event: click; geometry.width: 0.25; geometry.height: 0.25; geometry.depth: 0.25;"><a-animation id="audio-ani" attribute="position" from="3 0.5 -3" to="-0.8 1.6 -2" begin="click"></a-animation></a-entity>
+        <a-entity class="box" geometry="primitive: box; width:1; height:1; depth:1;" position="3 1.75 -3" rotation="0 45 0" material="src:#video" fit-texture event-set="_event: click; _target: #video-ani;, _event: click; geometry.width: 0.25; geometry.height: 0.25; geometry.depth: 0.25;"><a-animation id="video-ani" attribute="position" from="3 1.75 -3" to="-0.5 1.85 -2" begin="click"></a-animation></a-entity>
+        <a-entity class="box" geometry="primitive: box; width:1; height:1; depth:1;" position="3 3 -3" rotation="0 45 0" material="src:#kinesthetic" fit-texture event-set="_event: click; _target: #kine-ani;, _event: click; geometry.width: 0.25; geometry.height: 0.25; geometry.depth: 0.25;"><a-animation id="kinec-ani" attribute="position" from="3 3 -3" to="0.20 2.20 -2" begin="click"></a-animation></a-entity>
+
+        <a-entity class="box" geometry="primitive: box; width:3; height:5; depth:4;" position="-7 1 -4" rotation="0 -45 0" material="src:#door" fit-texture href="./index.html" target="#boxout"> <a-animation id="boxout" attribute="rotation" from="0 0 0" to="0 -360 0" begin="href" dur="1000" easing="ease-in-back"></a-animation></a-entity>
+
+        <a-sky src="#bg"></a-sky>
+
+      </a-scene>
+
+
+</body>
+</html>
